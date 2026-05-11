@@ -1,93 +1,920 @@
-import Image from 'next/image';
+'use client';
 
-import ExtensionDetails from '@/app/(delete-this-and-modify-page.tsx)/ExtensionDetails';
-import SetupDetails from '@/app/(delete-this-and-modify-page.tsx)/SetupDetails';
+import { useState } from 'react';
+import Link from 'next/link';
 
-const HomePage: React.FC = () => {
+import {
+    ArrowRight,
+    CarFront,
+    ChevronDown,
+    Mail,
+    HeartHandshake,
+    Phone,
+    Sparkles,
+    Star,
+    Trees
+} from 'lucide-react';
+
+import { Button } from '@/registry/new-york-v4/ui/button';
+
+const whatsappLink = 'https://wa.me/66931246329';
+
+const highlights = [
+    {
+        title: 'Private and flexible',
+        description: 'No rushing, no group bus, and no fixed route if you want to change the plan.',
+        icon: Sparkles
+    },
+    {
+        title: 'Friendly local support',
+        description: 'I can help with temple visits, food stops, scenic places, and practical travel questions.',
+        icon: HeartHandshake
+    },
+    {
+        title: 'Comfortable travel day',
+        description: 'Hotel pickup, simple planning, and a calm pace so your trip feels easy from start to finish.',
+        icon: CarFront
+    },
+    {
+        title: 'Scenic local routes',
+        description: 'Quiet roads, mountain views, local stops, and places that feel less rushed and more personal.',
+        icon: Trees
+    }
+];
+
+const tripGroups = [
+    {
+        title: 'Chiang Mai Tours',
+        intro: 'Temple days, waterfalls, city highlights, and easy local routes close to Chiang Mai.',
+        trips: [
+            {
+                title: 'Full Day Doi Suthep and Sticky Waterfall',
+                price: 'From 2400 Thai Baht',
+                description:
+                    'A balanced full day of temple visits, waterfall scenery, and one of Chiang Mai’s most fun natural adventures.',
+                meta: 'Chiang Mai day trip',
+                accent: 'from-[#1b4864]/50 via-[#3f7a7c]/40 to-[#d89f57]/50',
+                itinerary: [
+                    { time: '08:30 - 09:00', title: 'Hotel pickup', text: 'I pick you up from your hotel at the time we agree in advance.' },
+                    { title: 'Secret temple by the waterfall', text: 'Explore a quieter hidden temple in a beautiful natural setting.' },
+                    { title: 'Doi Suthep Temple', text: 'Visit Chiang Mai’s most famous temple and enjoy the cultural atmosphere and city views.' },
+                    { time: '12:00 - 13:00', title: 'Lunch or coffee break', text: 'Relax at a local restaurant or cafe. Food and drinks are not included.' },
+                    { title: 'Drive to Sticky Waterfall', text: 'Continue to the limestone waterfall that is one of the area’s most unique places.' },
+                    { title: 'Climb and enjoy the waterfall', text: 'Spend time walking, climbing, and enjoying the natural surroundings.' },
+                    { time: '16:30 - 17:30', title: 'Return to hotel', text: 'Head back after a full and memorable day.' }
+                ],
+                note: 'This schedule offers a balanced mix of cultural exploration, natural beauty, and adventure.'
+            },
+            {
+                title: 'Half Day Mountain Temple Tour',
+                price: 'From 1200 Thai Baht',
+                description:
+                    'A shorter temple and waterfall route for travelers who want culture, scenery, and a relaxed half-day experience.',
+                meta: 'Chiang Mai half day',
+                accent: 'from-[#28495f]/50 via-[#5a8270]/35 to-[#c9914f]/50',
+                itinerary: [
+                    { time: '08:30 - 09:30', title: 'Hotel pickup', text: 'I pick you up from your hotel and we begin the trip at an easy pace.' },
+                    { title: 'Doi Suthep Temple', text: 'Visit the iconic mountain temple and take in the wide views over Chiang Mai.' },
+                    { title: 'Secret temple on the waterfall', text: 'Stop at a quieter hidden spot with water, greenery, and a peaceful local feel.' },
+                    { title: 'Enjoy the waterfall', text: 'Take your time in nature. You can relax, dip your toes, or climb a little if you like.' },
+                    { time: '14:00 - 15:00', title: 'Drop off', text: 'Return to your hotel or stop at a nice local restaurant or coffee shop.' }
+                ],
+                note: 'This route blends culture, nature, and a relaxed half-day pace.'
+            },
+            {
+                title: 'Full Day Chiang Mai Sky, Water & Land',
+                price: 'From 2400 Thai Baht',
+                description:
+                    'A full day that mixes temples, local food, and time on the Ping River for travelers who want variety in one trip.',
+                meta: 'Chiang Mai highlights',
+                accent: 'from-[#2e6171]/45 via-[#7aa1a2]/28 to-[#d3a25d]/50',
+                itinerary: [
+                    { time: '08:30 - 09:00', title: 'Hotel pickup', text: 'I pick you up from your hotel and we start the day in comfort.' },
+                    { title: 'Doi Suthep Temple', text: 'Enjoy the spiritual atmosphere and panoramic views from Chiang Mai’s best-known temple.' },
+                    { title: 'City temple visits', text: 'Explore some of the city’s most loved temples and see a different side of Chiang Mai.' },
+                    { title: 'Local lunch', text: 'Stop for a well-known local meal and enjoy Chiang Mai’s famous khao soi with a drink.' },
+                    { title: 'Ping River experience', text: 'Take a calm kayak or boat ride and enjoy the river at a slower pace.' },
+                    { title: 'More city highlights', text: 'Continue the afternoon with more temples and interesting places around the city.' },
+                    { time: '16:00 - 17:30', title: 'Drop off at hotel', text: 'Finish the day with a comfortable return to your hotel.' }
+                ]
+            },
+            {
+                title: 'Half or Full Day Trekking and Lunch',
+                price: 'From 1300 Thai Baht',
+                description:
+                    'A nature-focused option with trekking, lake scenery, waterfall time, and a relaxed local lunch.',
+                meta: 'Nature route',
+                accent: 'from-[#334b4c]/50 via-[#6d8d63]/30 to-[#c78b48]/45',
+                itinerary: [
+                    { title: 'Option 1: Full day', text: 'A slower nature day with temple, lake, lunch, and trekking.' },
+                    { time: '08:30 - 09:30', title: 'Hotel pickup', text: 'I pick you up from your hotel and we head toward the countryside.' },
+                    { title: 'Secret temple and waterfall', text: 'Visit a peaceful temple area beside the waterfall before continuing into nature.' },
+                    { title: 'Huay Tung Tao Lake', text: 'Enjoy the scenery around the lake and take in a more local side of Chiang Mai.' },
+                    { title: 'Lunch by the lake', text: 'Relax over a local lunch with beautiful views and fresh air.' },
+                    { title: 'Trek to the waterfall', text: 'Walk through nature and discover a hidden waterfall near the lake area.' },
+                    { time: '16:30 - 17:30', title: 'Return to hotel', text: 'Head back after a peaceful and active full day.' },
+                    { title: 'Option 2: Half day', text: 'A shorter version focused on trekking, lake views, and lunch.' },
+                    { time: '08:30 - 09:30', title: 'Hotel pickup', text: 'Start the half-day route with pickup from your hotel.' },
+                    { title: 'Trek and lake time', text: 'Walk to the waterfall, then relax and enjoy Huay Tung Tao Lake.' },
+                    { title: 'Lunch by the lake', text: 'Enjoy a simple local lunch before heading back.' },
+                    { time: '12:30 - 13:30', title: 'Return to hotel', text: 'Finish the half-day trip with a comfortable return.' }
+                ],
+                note: 'These options offer time in nature, adventurous trekking, and a chance to enjoy local food in a peaceful setting.'
+            }
+        ]
+    },
+    {
+        title: 'Doi Inthanon Tours',
+        intro: 'Mountain scenery, waterfalls, pagodas, hill tribe culture, and Thailand’s highest peak.',
+        trips: [
+            {
+                title: 'Full Day Doi Inthanon Active Trekking',
+                price: 'From 3200 Thai Baht',
+                description:
+                    'A full mountain day for travelers who want viewpoints, pagodas, waterfalls, and active trekking trails.',
+                meta: 'Doi Inthanon active day',
+                accent: 'from-[#36544a]/55 via-[#628d73]/32 to-[#c48a4b]/45',
+                itinerary: [
+                    { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with pickup from your hotel at the agreed time.' },
+                    { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive to Thailand’s highest mountain and one of the country’s most beautiful national parks.' },
+                    { title: 'Explore the highest peak', text: 'Stop at the summit area and enjoy the fresh air and mountain surroundings.' },
+                    { title: 'Kew Mae Pan Nature Trail', text: 'Walk through one of the park’s best-known trails and take in the changing landscape.' },
+                    { title: 'Visit Twin Pagodas', text: 'Explore the beautiful royal pagodas and their gardens.' },
+                    { title: 'Lunch at a local restaurant', text: 'Enjoy a relaxing lunch with authentic Thai food.' },
+                    { title: 'Pha Dok Siew Nature Trail trek', text: 'Spend around 1.5 hours trekking through rice fields and mountain scenery toward a hill tribe village, with mountain coffee and local culture along the way.' },
+                    { title: 'Visit Wachirathan Waterfall', text: 'Finish the outing at one of Doi Inthanon’s most impressive waterfalls.' },
+                    { time: '18:00 - 19:00', title: 'Return to hotel', text: 'Head back to Chiang Mai after a full and active mountain day.' }
+                ]
+            },
+            {
+                title: 'Full Day Doi Inthanon Relax',
+                price: 'From 3200 Thai Baht',
+                description:
+                    'A slower-paced mountain route with the highest peak, pagodas, and two beautiful waterfalls.',
+                meta: 'Doi Inthanon relaxed day',
+                accent: 'from-[#34535f]/52 via-[#7397a0]/28 to-[#d1a56a]/48',
+                itinerary: [
+                    { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with a prompt pickup from your hotel.' },
+                    { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive to Thailand’s highest mountain.' },
+                    { title: 'Explore the highest peak', text: 'Take in the panoramic views and cool mountain atmosphere.' },
+                    { title: 'Visit Twin Pagodas', text: 'Enjoy the architecture, gardens, and calm surroundings.' },
+                    { title: 'Lunch at a local restaurant', text: 'Savor authentic Thai cuisine in a relaxed setting.' },
+                    { title: 'Visit Wachirathan Waterfall', text: 'Stop at one of the park’s most striking waterfalls.' },
+                    { title: 'Journey to Mae Ya Waterfall', text: 'Continue to one of Thailand’s most beautiful waterfalls, known for its wide cascading curtain of water.' },
+                    { time: '18:00 - 19:00', title: 'Return to hotel', text: 'Return after a scenic and restful day in the mountains.' }
+                ]
+            },
+            {
+                title: 'Full Day Doi Inthanon Hilltribe',
+                price: 'From 3200 Thai Baht',
+                description:
+                    'A cultural mountain route that combines major Inthanon highlights with a hill tribe village visit.',
+                meta: 'Doi Inthanon cultural day',
+                accent: 'from-[#43594b]/55 via-[#7c8f63]/28 to-[#b78354]/48',
+                itinerary: [
+                    { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with pickup from your hotel.' },
+                    { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive toward Thailand’s highest mountain.' },
+                    { title: 'Explore the highest peak', text: 'Stop at the summit area and enjoy the mountain setting.' },
+                    { title: 'Visit Twin Pagodas', text: 'Explore the beautiful pagodas and their quiet surroundings.' },
+                    { title: 'Lunch at a local restaurant', text: 'Take a break and enjoy authentic Thai cuisine.' },
+                    { title: 'Visit hill tribe at Ban Mae Klang Luang', text: 'Experience local village life and learn more about the traditions of the community.' },
+                    { title: 'Visit Wachirathan Waterfall', text: 'Finish with one of Inthanon’s most beautiful waterfalls.' },
+                    { time: '18:30 - 20:00', title: 'Return to hotel', text: 'Return to Chiang Mai after a full cultural and scenic day.' }
+                ]
+            },
+            {
+                title: 'Create your own trip to your needs',
+                price: 'From 1000 Thai Baht',
+                description:
+                    'If you already know what you would like to see around Doi Inthanon, I can help create a route just for you.',
+                meta: 'Custom route',
+                accent: 'from-[#3a4f61]/52 via-[#7b8a92]/25 to-[#d0a46a]/48',
+                itinerary: [],
+                note: 'Send me your ideas, travel style, and timing, and I can help shape a custom mountain day.'
+            }
+        ]
+    },
+    {
+        title: 'Chiang Rai Tours',
+        intro: 'Longer day trips for temples, art spaces, parks, and iconic landmarks in Chiang Rai.',
+        trips: [
+            {
+                title: 'Chiang Rai White Temple and Big Buddha',
+                price: 'From 3400 Thai Baht',
+                description:
+                    'A classic Chiang Rai day with the White Temple, Big Buddha, and a hot spring stop on the way.',
+                meta: 'Chiang Rai full day',
+                accent: 'from-[#314f69]/52 via-[#6e93ad]/28 to-[#d3ae79]/45',
+                itinerary: [
+                    { time: '07:30 - 08:00', title: 'Departure from hotel', text: 'Leave Chiang Mai in the morning for the drive to Chiang Rai Province.' },
+                    { title: 'Mae Khachan Hot Spring', text: 'Enjoy a short stop and stretch in the peaceful surroundings.' },
+                    { title: 'Rong Khun Temple (White Temple)', text: 'Explore the famous White Temple, known for its striking white design and artistic detail.' },
+                    { title: 'Lunch break', text: 'Enjoy lunch at a local restaurant before continuing the day.' },
+                    { title: 'Wat Huay Pla Kang (Big Buddha)', text: 'Visit the impressive temple complex and giant Buddha statue with wide surrounding views.' },
+                    { title: 'Return journey to Chiang Mai', text: 'Begin the drive back after the main visits are complete.' },
+                    { time: '18:00 - 18:30', title: 'Return to hotel', text: 'Arrive back at your hotel in Chiang Mai.' }
+                ]
+            },
+            {
+                title: 'Chiang Rai White & Blue Temple & Black House',
+                price: 'From 3400 Thai Baht',
+                description:
+                    'A rich Chiang Rai route covering three of the province’s most striking and creative landmarks.',
+                meta: 'Chiang Rai highlights',
+                accent: 'from-[#224e67]/55 via-[#4d85aa]/28 to-[#d1a16a]/48',
+                itinerary: [
+                    { time: '07:30', title: 'Departure from hotel', text: 'Leave Chiang Mai in the morning for the approximately 3-hour drive to Chiang Rai.' },
+                    { title: 'Mae Khachan Hot Spring', text: 'Enjoy a short break before continuing north.' },
+                    { title: 'Visit Rong Khun Temple (White Temple)', text: 'Explore one of Thailand’s most iconic contemporary temples.' },
+                    { title: 'Lunch at a local restaurant', text: 'Enjoy authentic Thai cuisine and a midday break.' },
+                    { title: 'Visit Blue Temple', text: 'Explore Wat Rong Suea Ten, known for its intense blue and gold details.' },
+                    { title: 'Visit Black House', text: 'Discover Baan Dam Museum and its dramatic collection of buildings and artwork.' },
+                    { title: 'Return to Chiang Mai', text: 'Depart Chiang Rai and begin the drive back south.' },
+                    { time: '18:00 - 18:30', title: 'Return to hotel', text: 'Arrive back at your hotel in Chiang Mai.' }
+                ]
+            },
+            {
+                title: 'Chiang Rai White Temple & Singha Park',
+                price: 'From 3400 Thai Baht',
+                description:
+                    'A scenic Chiang Rai day combining the White Temple with a more open countryside experience in Singha Park.',
+                meta: 'Temple and park day',
+                accent: 'from-[#30566d]/50 via-[#7b9f7f]/25 to-[#d3a66a]/48',
+                itinerary: [
+                    { time: '07:30 - 08:00', title: 'Departure from hotel', text: 'Leave Chiang Mai in the morning for the drive to Chiang Rai.' },
+                    { title: 'Mae Khachan Hot Spring', text: 'Enjoy a short break and take in the surroundings.' },
+                    { time: '10:30 - 12:30', title: 'Rong Khun Temple (White Temple)', text: 'Explore the famous White Temple and enjoy its unique design and atmosphere.' },
+                    { title: 'Lunch at Singha Park', text: 'Enjoy North Thai cuisine surrounded by the park’s scenic landscape.' },
+                    { title: 'Visit Singha Park', text: 'Explore the park and, if you like, rent a bicycle or take the park bus through the grounds.' },
+                    { title: 'Return journey to Chiang Mai', text: 'Begin the drive back after your afternoon at the park.' },
+                    { time: '18:00 - 18:30', title: 'Return to hotel', text: 'Arrive back at your hotel in Chiang Mai.' }
+                ]
+            },
+            {
+                title: 'Create your own trip to your needs',
+                price: 'Custom pricing',
+                description:
+                    'If you want a different Chiang Rai route, I can help you combine temples, cafes, viewpoints, and local stops.',
+                meta: 'Custom route',
+                accent: 'from-[#465a6e]/50 via-[#8ba0ad]/24 to-[#d2aa74]/48',
+                itinerary: [],
+                note: 'Send me your ideas and I can suggest a route that works well for a Chiang Rai day trip.'
+            }
+        ]
+    },
+    {
+        title: 'Special Destinations',
+        intro: 'A few different full-day ideas beyond the classic temple routes.',
+        trips: [
+            {
+                title: 'Full Day Explore Amazing Lampang',
+                price: 'From 2500 Thai Baht',
+                description:
+                    'A longer scenic day to Lampang with mountain temple views, waterfall time, and hot springs.',
+                meta: 'Full day Lampang',
+                accent: 'from-[#4f5b46]/52 via-[#83946f]/28 to-[#cb9357]/45',
+                itinerary: [
+                    { time: '08:00', title: 'Pick up from your hotel', text: 'Pickup from your hotel at the agreed time.' },
+                    { title: 'Wat Chalermprakiat Phrachomklao Rachanuson', text: 'After around 2.5 hours of driving, visit the temple and take in its striking mountain setting.' },
+                    { title: 'Lunch break', text: 'Enjoy lunch and recharge for the afternoon.' },
+                    { title: 'Chae Son Waterfall and hot spring', text: 'Explore the waterfall and relax in the hot spring area.' },
+                    { title: 'Return journey to Chiang Mai', text: 'Prepare for the drive back after enjoying Lampang’s natural beauty.' },
+                    { time: '18:00 - 18:30', title: 'Arrive at your hotel', text: 'Return to Chiang Mai in the evening.' }
+                ]
+            },
+            {
+                title: 'Elephant and Waterfall Experience',
+                price: 'From 2300 Thai Baht',
+                description:
+                    'A hands-on elephant experience that can stay half-day or continue into a full day with a waterfall visit.',
+                meta: 'Elephant experience',
+                accent: 'from-[#5b5f3c]/50 via-[#8e9359]/25 to-[#c99053]/44',
+                itinerary: [
+                    { title: 'Pick up from your hotel in Chiang Mai', text: 'Begin your journey at the agreed time.' },
+                    { title: 'Arrival at Elephant Home', text: 'Reach the elephant home after around 45 minutes of driving.' },
+                    { title: 'Elephant home experience', text: 'Change into Karen Mahout clothing, learn about elephant care and behavior, feed the elephants, walk with them, and help with bathing and brushing in the river.' },
+                    { title: 'Food at the Elephant Home', text: 'Enjoy food provided after the activities.' },
+                    { title: 'Half-day return or full-day extension', text: 'You can return directly to Chiang Mai or continue to Mae Sa Waterfall or Sticky Waterfall for a longer day.' }
+                ]
+            },
+            {
+                title: 'Chiang Mai Grand Canyon',
+                price: 'From 1500 Thai Baht',
+                description:
+                    'A playful waterpark day for families, couples, or groups who want something active and different.',
+                meta: 'Waterpark day',
+                accent: 'from-[#245b72]/52 via-[#4fa2bc]/26 to-[#d1a66e]/42',
+                itinerary: [
+                    { title: 'Pick up from your hotel in Chiang Mai', text: 'I can arrange pickup at a time that works best for you.' },
+                    { title: 'Arrival at Grand Canyon Waterpark', text: 'Arrive and get ready for a fun day of activities.' },
+                    { title: 'Enjoy waterpark activities', text: 'Spend the day enjoying ziplining, wakeboarding, swimming, cliff jumping, and more.' },
+                    { title: 'Departure from Grand Canyon Waterpark', text: 'Leave whenever you are ready after your time at the park.' },
+                    { title: 'Drop off at your hotel', text: 'Return to your hotel in Chiang Mai.' }
+                ]
+            },
+            {
+                title: 'Chiang Mai Night Safari',
+                price: 'From 2500 Thai Baht',
+                description:
+                    'A fun family-friendly day or evening with animals, tram rides, shows, and a magical safari atmosphere.',
+                meta: 'Family destination',
+                accent: 'from-[#314146]/56 via-[#6c7c65]/24 to-[#bd8a55]/44',
+                itinerary: [
+                    { title: 'Morning or evening schedule', text: 'Pick up from your hotel at your preferred time for a noon or evening visit.' },
+                    { title: 'Arrival at Chiang Mai Night Safari', text: 'Choose the timing that best suits your day.' },
+                    { title: 'Night Safari experience', text: 'Explore the park, enjoy animal encounters, safari tram rides, shows, and interactive activities.' },
+                    { title: 'Lunch or dinner break', text: 'Take a meal break at one of the restaurants inside the safari complex.' },
+                    { title: 'Continue exploring', text: 'Enjoy more attractions, photography, and wildlife observation at your own pace.' },
+                    { title: 'Departure and return', text: 'Leave when you are ready and return to your hotel in Chiang Mai.' }
+                ]
+            }
+        ]
+    }
+];
+
+const reviews = [
+    {
+        quote: 'May made our Chiang Mai trip feel relaxed and personal. We never felt rushed, and the whole day was easy.',
+        author: 'Family from Singapore'
+    },
+    {
+        quote: 'Very warm, very helpful, and great local suggestions. We saw the highlights but the day still felt natural.',
+        author: 'Couple from Australia'
+    },
+    {
+        quote: 'If you want a friendly local guide instead of a touristy experience, May is a lovely choice.',
+        author: 'Traveler from the UK'
+    }
+];
+
+const tourMarqueeImages = [
+    '/images/marquee/pexels-daciana-cristina-visan-2149801141-32514143.jpg',
+    '/images/marquee/pexels-sandro-sandrone-lazzarini-15116771-6333432.jpg',
+    '/images/marquee/pexels-jean-papillon-28600264.jpg',
+    '/images/marquee/pexels-kirandeepsingh-17371721.jpg',
+    '/images/marquee/pexels-ton-sanitprem-3503969-5233858.jpg'
+];
+
+const reviewMarqueeImages = [
+    '/images/marquee/pexels-gije-16986826.jpg',
+    '/images/marquee/pexels-vishalcross-37250801.jpg',
+    '/images/marquee/pexels-fernando-b-m-3624021-29448001.jpg',
+    '/images/marquee/pexels-billow926-2948812-5389026.jpg',
+    '/images/marquee/pexels-quintingellar-8258340.jpg'
+];
+
+const steps = [
+    {
+        title: 'Message me',
+        text: 'Tell me your dates, hotel area, and the places you would like to visit.'
+    },
+    {
+        title: 'I help plan the route',
+        text: 'I can suggest a comfortable trip that fits your time and travel style.'
+    },
+    {
+        title: 'Enjoy your day in Chiang Mai',
+        text: 'I will pick you up and help your travel day feel smooth, relaxed, and enjoyable.'
+    }
+];
+
+const patternedLight = {
+    backgroundImage:
+        "linear-gradient(180deg, rgba(248,246,239,0.9) 0%, rgba(255,252,247,0.93) 100%), url('/images/cxbackground.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+} as const;
+
+const beigeSection = {
+    backgroundColor: '#f1e5d2',
+    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+} as const;
+
+const beigeBackgroundLayer = {
+    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+} as const;
+
+const HomePage = () => {
+    const [activeTripGroup, setActiveTripGroup] = useState(tripGroups[0]?.title ?? '');
+    const [openTrip, setOpenTrip] = useState<string | null>(null);
+    const [flippedBenefit, setFlippedBenefit] = useState<string | null>(null);
+    const selectedTripGroup = tripGroups.find((group) => group.title === activeTripGroup) ?? tripGroups[0];
+
     return (
-        <main className='mx-auto mt-6 flex max-w-7xl flex-col justify-center gap-6 px-3 font-[family-name:var(--font-geist-sans)] sm:mt-3 sm:gap-12 sm:px-0'>
-            <div className='justify-centersm:items-start row-start-2 flex flex-col items-center gap-8'>
-                <div className='flex items-center gap-4'>
-                    <Image
-                        className='h-6 sm:h-8 dark:invert'
-                        src='/next.svg'
-                        alt='Next.js logo'
-                        width={180}
-                        height={38}
-                        priority
-                    />
-                    <h6 className='text-3xl font-bold'>+</h6>
-                    {/* prettier-ignore */}
-                    <div className="mr-4 flex items-center space-x-2 lg:mr-6"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="size-10"><rect width="256" height="256" fill="none"></rect><line x1="208" y1="128" x2="128" y2="208" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32"></line><line x1="192" y1="40" x2="40" y2="192" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32"></line></svg><span className="font-bold text-2xl">shadcn/ui</span></div>
-                </div>
-                <ol className='list-inside list-decimal text-center font-[family-name:var(--font-geist-mono)] text-sm sm:text-left'>
-                    <li className='mb-2'>
-                        Get started by editing{' '}
-                        <code className='rounded bg-black/[.05] px-1 py-0.5 font-semibold dark:bg-white/[.06]'>
-                            src/app/page.tsx
-                        </code>
-                        .
-                    </li>
-                    <li>Save and see your changes instantly.</li>
-                </ol>
-                <div className='flex items-center gap-4'>
-                    <a
-                        className='flex h-10 flex-wrap items-center justify-center gap-2 gap-x-3 rounded-full border border-solid border-transparent bg-neutral-200 px-4 text-sm transition-colors hover:bg-neutral-300 sm:h-12 sm:px-5 sm:text-base dark:bg-neutral-700 dark:hover:bg-neutral-600'
-                        href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        <Image
-                            className='invert dark:invert-0'
-                            src='/vercel.svg'
-                            alt='Vercel logomark'
-                            width={20}
-                            height={20}
+        <main
+            id='top'
+            className='bg-[#f8f3ea] text-slate-900'>
+            <header className='sticky top-0 z-20 border-b border-[#e8dcc8]/80 bg-[rgba(250,246,239,0.86)] backdrop-blur-xl'>
+                <div className='mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8'>
+                    <Link href='#top' className='flex items-center'>
+                        <img
+                            alt='Chiang Mai Driver logo'
+                            className='h-11 w-auto sm:h-12'
+                            src='/images/cxlogo topnav.png'
                         />
-                        Deploy now
-                    </a>
-                    <a
-                        className='flex h-10 items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base dark:border-white/[.145] dark:hover:bg-[#1a1a1a]'
-                        href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        Read Next.js docs
-                    </a>
+                    </Link>
+                    <nav className='hidden items-center gap-6 text-sm text-slate-600 md:flex'>
+                        <Link className='transition hover:text-[#173247]' href='#trips'>
+                            Tours
+                        </Link>
+                        <Link className='transition hover:text-[#173247]' href='#about'>
+                            About May
+                        </Link>
+                        <Link className='transition hover:text-[#173247]' href='#reviews'>
+                            Reviews
+                        </Link>
+                        <Link className='transition hover:text-[#173247]' href='#contact'>
+                            Contact
+                        </Link>
+                    </nav>
+                    <Button
+                        asChild
+                        className='rounded-full border border-[#d9b27a] bg-[#c97932] px-5 text-white shadow-sm hover:bg-[#b46c2e]'>
+                        <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                            Plan My Trip
+                        </Link>
+                    </Button>
                 </div>
-            </div>
-            <div className='row-start-3 hidden flex-wrap items-center justify-center gap-6 sm:flex'>
-                <a
-                    className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-                    href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-                    target='_blank'
-                    rel='noopener noreferrer'>
-                    <Image aria-hidden src='/file.svg' alt='File icon' width={16} height={16} />
-                    Learn
-                </a>
-                <a
-                    className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-                    href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-                    target='_blank'
-                    rel='noopener noreferrer'>
-                    <Image aria-hidden src='/window.svg' alt='Window icon' width={16} height={16} />
-                    Examples
-                </a>
-                <a
-                    className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-                    href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-                    target='_blank'
-                    rel='noopener noreferrer'>
-                    <Image aria-hidden src='/globe.svg' alt='Globe icon' width={16} height={16} />
-                    Go to nextjs.org →
-                </a>
-            </div>
-            <div className='space-y-6'>
-                <h2 className='text-center text-lg'>Whats included?</h2>
-                <SetupDetails />
-            </div>
-            <div className='space-y-6'>
-                <h2 className='text-center text-lg'>VS Code Extensions</h2>
-                <ExtensionDetails />
-            </div>
+            </header>
+
+            <section className='relative isolate min-h-[92svh] overflow-hidden'>
+                <video
+                    className='absolute inset-0 h-full w-full object-cover'
+                    src='/images/Cx Hero.mp4'
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload='auto'
+                />
+                <div className='absolute inset-0 bg-[linear-gradient(180deg,rgba(8,22,32,0.22)_0%,rgba(8,22,32,0.48)_45%,rgba(8,22,32,0.72)_100%)]' />
+                <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(240,196,125,0.24),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(83,150,176,0.18),transparent_26%)]' />
+
+                <div className='relative mx-auto flex min-h-[92svh] max-w-6xl items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8'>
+                    <div className='mx-auto flex max-w-4xl flex-col items-center text-white'>
+                        <img
+                            alt='Chiang Mai Driver hero logo'
+                            className='mb-8 h-40 w-auto sm:h-52 lg:h-72'
+                            src='/images/cxlogo.png'
+                        />
+                        <h1 className='travel-display mt-6 text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl'>
+                            Explore Chiang Mai with May.
+                        </h1>
+                        <p className='mt-5 max-w-2xl text-lg leading-8 text-white/82'>
+                            Private day trips and driver service for a warm, easy, and personal experience in northern Thailand.
+                        </p>
+
+                        <div className='mt-8 flex flex-col items-center gap-3 sm:flex-row'>
+                            <Button
+                                asChild
+                                size='lg'
+                                className='rounded-full border border-[#e4be88] bg-[#d08238] px-6 text-white hover:bg-[#bc7230]'>
+                                <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                                    Chat with May
+                                    <ArrowRight className='size-4' />
+                                </Link>
+                            </Button>
+                            <Button
+                                asChild
+                                size='lg'
+                                variant='outline'
+                                className='rounded-full border-white/25 bg-white/10 px-6 text-white hover:bg-white/18 hover:text-white'>
+                                <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                                    Ask About Tours
+                                </Link>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className='relative border-y border-[#e5d6c0] py-8' style={patternedLight}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
+                        {highlights.map(({ title, description, icon: Icon }) => {
+                            const isFlipped = flippedBenefit === title;
+
+                            return (
+                                <button
+                                    key={title}
+                                    type='button'
+                                    aria-pressed={isFlipped}
+                                    onClick={() => setFlippedBenefit(isFlipped ? null : title)}
+                                    className='group h-36 rounded-lg text-center [perspective:1000px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b56f2d]'>
+                                    <span
+                                        className={`relative block h-full rounded-lg transition-transform duration-500 [transform-style:preserve-3d] ${
+                                            isFlipped ? '[transform:rotateY(180deg)]' : ''
+                                        }`}>
+                                        <span className='absolute inset-0 flex flex-col items-center justify-center rounded-lg border border-[#dfcfb4] bg-[#fffaf2]/82 px-5 py-6 shadow-sm backdrop-blur-sm [backface-visibility:hidden]'>
+                                            <span className='flex size-12 items-center justify-center rounded-md bg-[#f2dfc4] text-[#b56f2d] shadow-[inset_0_0_0_1px_rgba(181,111,45,0.14)]'>
+                                                <Icon className='size-5' />
+                                            </span>
+                                            <span className='mt-4 text-base font-semibold text-[#173247]'>{title}</span>
+                                            <span className='mt-2 text-[0.68rem] font-medium tracking-[0.12em] text-[#a1612a]/65 uppercase transition group-hover:text-[#a1612a]'>
+                                                Click
+                                            </span>
+                                        </span>
+
+                                        <span className='absolute inset-0 flex flex-col items-center justify-center rounded-lg border border-[#dfcfb4] bg-[#173247] px-5 py-5 text-sm leading-6 text-white shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)]'>
+                                            <span>{description}</span>
+                                            <span className='mt-3 text-[0.65rem] font-medium tracking-[0.14em] text-white/45 uppercase'>
+                                                Tap back
+                                            </span>
+                                        </span>
+                                    </span>
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            <section className='relative py-9 sm:py-10' style={beigeSection}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center'>
+                        <div className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm'>
+                            <img
+                                alt='Welcome to Chiang Mai'
+                                className='h-auto w-full'
+                                src='/images/welcometocx.jpg'
+                            />
+                        </div>
+
+                        <div className='max-w-2xl'>
+                            <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>
+                                Welcome to Chiang Mai
+                            </p>
+                            <h2 className='travel-display mt-2 text-3xl text-[#173247] sm:text-4xl'>
+                                A calm, personal way to explore northern Thailand
+                            </h2>
+                            <p className='mt-3 text-base leading-7 text-slate-700'>
+                                If you would like a friendly local driver instead of a busy tour group, I can help you enjoy
+                                Chiang Mai at your own pace. Some guests want famous temples, some want mountain views and
+                                waterfalls, and some want a little of everything in one easy day.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id='trips' className='relative py-16' style={patternedLight}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='max-w-3xl'>
+                        <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>Popular Tours</p>
+                        <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
+                            A better way to choose a day trip
+                        </h2>
+                        <p className='mt-4 text-lg leading-8 text-slate-600'>
+                            Choose an area first, then browse the tours inside it. If you want, I can also help you create
+                            your own custom route.
+                        </p>
+                    </div>
+
+                    <div className='mt-8'>
+                        <div className='rounded-lg border border-[#dcc6a5] bg-white/70 p-2 shadow-sm backdrop-blur-sm'>
+                            <div className='grid gap-2 md:grid-cols-4'>
+                            {tripGroups.map((group) => {
+                                const isActive = group.title === selectedTripGroup.title;
+
+                                return (
+                                    <button
+                                        key={group.title}
+                                        type='button'
+                                        onClick={() => {
+                                            setActiveTripGroup(group.title);
+                                            setOpenTrip(null);
+                                        }}
+                                        className={`rounded-md border px-4 py-3 text-sm font-medium transition ${
+                                            isActive
+                                                ? 'border-[#1d4d5f] bg-[#1d4d5f] text-white shadow-sm'
+                                                : 'border-transparent bg-white/78 text-slate-700 hover:border-[#dfc39d] hover:bg-white'
+                                        }`}>
+                                        {group.title}
+                                    </button>
+                                );
+                            })}
+                            </div>
+                        </div>
+
+                        <div className='mt-6 max-w-2xl'>
+                            <h3 className='travel-display text-3xl text-[#173247] sm:text-4xl'>{selectedTripGroup.title}</h3>
+                            <p className='mt-2 text-base leading-7 text-slate-600'>{selectedTripGroup.intro}</p>
+                        </div>
+
+                        <div className='mt-5 grid items-start gap-6 lg:grid-cols-2'>
+                            {selectedTripGroup.trips.map((trip) => {
+                                const tripKey = `${selectedTripGroup.title}-${trip.title}`;
+                                const isOpen = openTrip === tripKey;
+
+                                return (
+                                <article
+                                    key={tripKey}
+                                    className='self-start overflow-hidden rounded-lg border border-[#dfcfb4] bg-white shadow-sm'>
+                                    <div>
+                                        <div className='relative h-64 overflow-hidden'>
+                                            <img
+                                                alt={trip.title}
+                                                className='absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.04]'
+                                                src='/images/cxbackground.png'
+                                            />
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${trip.accent}`} />
+                                            <div className='absolute inset-0 bg-[linear-gradient(180deg,rgba(17,35,47,0.02)_8%,rgba(17,35,47,0.22)_44%,rgba(17,35,47,0.72)_100%)]' />
+                                            <div className='absolute right-5 top-5 rounded-md bg-[#fff5e8] px-3 py-2 text-sm font-semibold text-[#173247] shadow-sm'>
+                                                {trip.price}
+                                            </div>
+                                            <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
+                                                <p className='mb-2 inline-flex items-center rounded-md bg-white/18 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase backdrop-blur'>
+                                                    {trip.meta}
+                                                </p>
+                                                <h4 className='travel-display text-2xl leading-tight sm:text-3xl'>{trip.title}</h4>
+                                            </div>
+                                        </div>
+                                        <div className='border-t border-[#efe4d2] px-5 py-5'>
+                                            <p className='text-base leading-7 text-slate-600'>{trip.description}</p>
+                                            <div className='mt-4 flex flex-wrap items-center justify-between gap-4'>
+                                                <button
+                                                    type='button'
+                                                    onClick={() => setOpenTrip(isOpen ? null : tripKey)}
+                                                    className={`inline-flex items-center gap-3 rounded-md border border-[#ead8bd] px-4 py-2 text-sm font-medium text-[#173247] transition ${isOpen ? 'bg-[#f5e6d1]' : 'bg-[#fff8ef]'}`}>
+                                                    <span>{trip.itinerary.length ? 'See the day plan' : 'Plan this trip with May'}</span>
+                                                    <span className={`flex size-7 items-center justify-center rounded-md bg-white text-[#a1612a] shadow-sm transition ${isOpen ? 'rotate-180' : ''}`}>
+                                                        <ChevronDown className='size-4' />
+                                                    </span>
+                                                </button>
+                                                <a
+                                                    className='inline-flex items-center gap-2 text-sm font-semibold text-[#173247] underline underline-offset-4'
+                                                    href={whatsappLink}
+                                                    target='_blank'
+                                                    rel='noopener noreferrer'>
+                                                    Ask May on WhatsApp
+                                                    <ArrowRight className='size-4' />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {isOpen ? (
+                                    <div className='border-t border-[#efe4d2] bg-[#fffaf2] px-5 py-5'>
+                                        {trip.itinerary.length ? (
+                                            <>
+                                                <p className='mb-4 text-sm font-semibold tracking-[0.18em] text-[#a1612a] uppercase'>
+                                                    Program
+                                                </p>
+                                                <div className='space-y-4'>
+                                                    {trip.itinerary.map((item) => (
+                                                        <div
+                                                            key={`${item.title}-${item.time ?? item.text}`}
+                                                                    className='rounded-lg border border-[#f0dfc8] bg-white/72 p-4 shadow-sm'>
+                                                            <div className='max-w-xl'>
+                                                                <p className='text-base font-semibold text-[#173247]'>{item.title}</p>
+                                                                {item.time ? (
+                                                                            <span className='mt-2 inline-flex w-fit rounded-md bg-[#f7ead8] px-3 py-1 text-xs font-semibold tracking-[0.14em] text-[#9b622d] uppercase'>
+                                                                        {item.time}
+                                                                    </span>
+                                                                ) : null}
+                                                                <p className='mt-3 text-sm leading-7 text-slate-600'>{item.text}</p>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        ) : null}
+
+                                        {trip.note ? (
+                                            <p className={`${trip.itinerary.length ? 'mt-5' : ''} rounded-lg border border-dashed border-[#e4cfb2] px-4 py-4 text-sm leading-7 text-slate-600`}>
+                                                {trip.note}
+                                            </p>
+                                        ) : null}
+                                    </div>
+                                    ) : null}
+                                </article>
+                            );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-label='Chiang Mai travel photos' className='overflow-hidden bg-[#173247]'>
+                <div className='chiang-mai-marquee flex w-max'>
+                    {[...tourMarqueeImages, ...tourMarqueeImages].map((image, index) => (
+                        <img
+                            key={`${image}-${index}`}
+                            alt=''
+                            aria-hidden='true'
+                            className='block h-[190px] w-[280px] flex-none object-cover sm:h-[240px] sm:w-[360px] lg:h-[300px] lg:w-[450px]'
+                            src={image}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            <section id='about' className='relative overflow-hidden bg-[#f1e5d2] py-14 sm:py-16'>
+                <div aria-hidden='true' className='absolute inset-0 scale-x-[-1]' style={beigeBackgroundLayer} />
+                <div className='relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm backdrop-blur-sm'>
+                        <div className='grid lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch'>
+                            <div className='relative min-h-[300px] lg:min-h-[390px]'>
+                                <img
+                                    alt='May in Chiang Mai'
+                                    className='absolute inset-0 h-full w-full object-cover'
+                                    src='/images/nattayamay 1.png'
+                                />
+                            </div>
+
+                            <div className='px-6 py-8 sm:px-8 sm:py-10'>
+                                <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>About May</p>
+                                <h2 className='travel-display mt-3 max-w-2xl text-3xl text-[#173247] sm:text-4xl'>
+                                    I want your trip to feel welcoming, smooth, and full of good memories.
+                                </h2>
+                                <p className='mt-4 max-w-2xl text-base leading-8 text-slate-700'>
+                                    Some travelers want the famous places. Some want mountain air, waterfalls, and a slower
+                                    route. Some just want a kind local person to help make the day easy. I enjoy listening
+                                    to what you like and helping shape a trip that feels right for you.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id='reviews' className='relative py-12' style={patternedLight}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-5 lg:grid-cols-3'>
+                        {reviews.map((review) => (
+                            <div
+                                key={review.author}
+                                className='rounded-lg border border-[#dfcfb4] bg-white px-6 py-6 shadow-sm'>
+                                <div className='flex gap-1 text-[#d89541]'>
+                                    {Array.from({ length: 5 }).map((_, index) => (
+                                        <Star key={index} className='size-4 fill-current' />
+                                    ))}
+                                </div>
+                                <p className='mt-4 text-base leading-8 text-slate-700'>&ldquo;{review.quote}&rdquo;</p>
+                                <div className='mt-5 flex items-center justify-between gap-4'>
+                                    <p className='text-sm font-medium text-[#173247]'>{review.author}</p>
+                                    <span className='text-xs font-semibold tracking-[0.16em] text-[#a1612a] uppercase'>Google</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className='relative py-14' style={beigeSection}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start'>
+                        <div className='max-w-xl'>
+                            <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>How It Works</p>
+                            <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
+                                A very easy way to arrange your day
+                            </h2>
+                            <p className='mt-4 text-base leading-8 text-slate-700'>
+                                Send me your idea, I help shape the route, and we keep the day comfortable from pickup to drop-off.
+                            </p>
+                        </div>
+
+                        <div className='relative grid gap-4'>
+                            {steps.map((step, index) => (
+                                <div
+                                    key={step.title}
+                                    className='grid gap-4 rounded-lg border border-[#dfcfb4] bg-white/72 px-5 py-5 shadow-sm sm:grid-cols-[3.5rem_1fr]'>
+                                    <div className='flex size-12 items-center justify-center rounded-md bg-[#1d4d5f] text-sm font-semibold text-white'>
+                                        0{index + 1}
+                                    </div>
+                                    <div>
+                                        <h3 className='text-lg font-semibold text-[#173247]'>{step.title}</h3>
+                                        <p className='mt-1 text-sm leading-7 text-slate-600'>{step.text}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-label='Northern Thailand travel photos' className='overflow-hidden bg-[#173247]'>
+                <div className='chiang-mai-marquee flex w-max'>
+                    {[...reviewMarqueeImages, ...reviewMarqueeImages].map((image, index) => (
+                        <img
+                            key={`${image}-${index}`}
+                            alt=''
+                            aria-hidden='true'
+                            className='block h-[190px] w-[280px] flex-none object-cover sm:h-[240px] sm:w-[360px] lg:h-[300px] lg:w-[450px]'
+                            src={image}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            <section id='contact' className='relative py-8' style={patternedLight}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='flex flex-col gap-5 rounded-lg border border-[#dfcfb4] bg-white/82 px-5 py-5 shadow-sm backdrop-blur-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between'>
+                        <div>
+                            <p className='text-sm font-semibold tracking-[0.2em] text-[#a1612a] uppercase'>Ready to plan?</p>
+                            <h2 className='travel-display mt-2 text-2xl text-[#173247] sm:text-3xl'>
+                                Send May your dates and favorite places.
+                            </h2>
+                            <p className='mt-2 max-w-2xl text-sm leading-6 text-slate-600'>
+                                I can help shape a comfortable private route for your Chiang Mai travel day.
+                            </p>
+                        </div>
+
+                        <Button
+                            asChild
+                            size='lg'
+                            className='w-full rounded-md border border-[#d9b27a] bg-[#173247] px-6 text-white hover:bg-[#102434] sm:w-auto'>
+                            <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                                Message May on WhatsApp
+                                <ArrowRight className='size-4' />
+                            </Link>
+                        </Button>
+                    </div>
+                </div>
+            </section>
+
+            <footer className='relative bg-[#102f43] py-8 text-white sm:py-9'>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:items-start'>
+                        <div>
+                            <img
+                                alt='Chiang Mai Driver logo'
+                                className='h-12 w-auto'
+                                src='/images/cxlogo footer.png'
+                            />
+                            <h2 className='travel-display mt-3 max-w-sm text-lg leading-snug text-white sm:text-xl'>
+                                Travel days should feel easy, personal, and full of lovely memories.
+                            </h2>
+                        </div>
+
+                        <div className='grid gap-5 sm:grid-cols-[1fr_auto]'>
+                            <div>
+                                <p className='text-sm font-semibold tracking-[0.18em] text-[#e4be88] uppercase'>Contact</p>
+                                <div className='mt-3 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/78'>
+                                    <a
+                                        className='flex items-center gap-3 transition hover:text-white'
+                                        href='mailto:travel@chiang-mai-driver.com'>
+                                        <span className='flex size-8 items-center justify-center rounded-md bg-white/10 text-[#e4be88]'>
+                                            <Mail className='size-4' />
+                                        </span>
+                                        <span>travel@chiang-mai-driver.com</span>
+                                    </a>
+                                    <a
+                                        className='flex items-center gap-3 transition hover:text-white'
+                                        href='tel:+66931246329'>
+                                        <span className='flex size-8 items-center justify-center rounded-md bg-white/10 text-[#e4be88]'>
+                                            <Phone className='size-4' />
+                                        </span>
+                                        <span>+66931246329</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p className='text-sm font-semibold tracking-[0.18em] text-[#e4be88] uppercase'>Social</p>
+                                <div className='mt-3 flex flex-wrap gap-2'>
+                                    <a
+                                        className='flex size-9 items-center justify-center rounded-md border border-white/15 bg-white/10 text-white transition hover:bg-white/18'
+                                        href='https://www.instagram.com/drivercnx?igsh=azhqeDY2d2gzcjlx'
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        aria-label='Instagram'>
+                                        <svg
+                                            aria-hidden='true'
+                                            className='size-4'
+                                            fill='none'
+                                            viewBox='0 0 24 24'
+                                            xmlns='http://www.w3.org/2000/svg'>
+                                            <rect x='3.5' y='3.5' width='17' height='17' rx='5' stroke='currentColor' strokeWidth='1.8' />
+                                            <circle cx='12' cy='12' r='4' stroke='currentColor' strokeWidth='1.8' />
+                                            <circle cx='17.2' cy='6.8' r='1.1' fill='currentColor' />
+                                        </svg>
+                                    </a>
+                                    <a
+                                        className='flex size-9 items-center justify-center rounded-md border border-white/15 bg-white/10 text-white transition hover:bg-white/18'
+                                        href='https://www.facebook.com/profile.php?id=61558679162233'
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        aria-label='Facebook'>
+                                        <svg
+                                            aria-hidden='true'
+                                            className='size-4'
+                                            fill='currentColor'
+                                            viewBox='0 0 24 24'
+                                            xmlns='http://www.w3.org/2000/svg'>
+                                            <path d='M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.9v1.9H8.2V14h2.3v7h3z' />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
     );
 };

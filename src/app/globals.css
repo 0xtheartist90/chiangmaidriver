@@ -5,39 +5,39 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --card: oklch(0.995 0.004 84.54);
+  --card-foreground: oklch(0.23 0.03 247.86);
+  --popover: oklch(0.995 0.004 84.54);
+  --popover-foreground: oklch(0.23 0.03 247.86);
+  --primary: oklch(0.53 0.11 232.45);
+  --primary-foreground: oklch(0.98 0.01 95.1);
+  --secondary: oklch(0.96 0.02 86.12);
+  --secondary-foreground: oklch(0.29 0.03 248.22);
+  --muted: oklch(0.97 0.01 89.53);
+  --muted-foreground: oklch(0.5 0.02 248.14);
+  --accent: oklch(0.94 0.03 77.96);
+  --accent-foreground: oklch(0.29 0.03 248.22);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.87 0 0);
+  --border: oklch(0.9 0.015 84.71);
+  --input: oklch(0.9 0.015 84.71);
+  --ring: oklch(0.78 0.07 230.11);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.87 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --sidebar: oklch(0.985 0.004 84.54);
+  --sidebar-foreground: oklch(0.23 0.03 247.86);
+  --sidebar-primary: oklch(0.53 0.11 232.45);
+  --sidebar-primary-foreground: oklch(0.98 0.01 95.1);
+  --sidebar-accent: oklch(0.97 0.01 89.53);
+  --sidebar-accent-foreground: oklch(0.29 0.03 248.22);
+  --sidebar-border: oklch(0.9 0.015 84.71);
+  --sidebar-ring: oklch(0.78 0.07 230.11);
+  --background: oklch(0.99 0.004 84.54);
+  --foreground: oklch(0.23 0.03 247.86);
 }
 
 .dark {
@@ -195,5 +195,37 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-geist-sans);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, white);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .travel-display {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "URW Palladio L", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .chiang-mai-marquee {
+    animation: chiang-mai-marquee 70s linear infinite;
+  }
+}
+
+@keyframes chiang-mai-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
