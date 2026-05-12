@@ -26,18 +26,18 @@ const highlights = [
         icon: Sparkles
     },
     {
-        title: 'Friendly local help',
-        description: 'Ask about food, temples, and stops.',
+        title: 'Flexible routes',
+        description: 'Change stops if your day changes.',
         icon: HeartHandshake
     },
     {
-        title: 'Comfortable travel',
-        description: 'Pickup, planning, and a calm route.',
+        title: 'Hotel pickup',
+        description: 'Easy start and relaxed return.',
         icon: CarFront
     },
     {
-        title: 'Scenic local routes',
-        description: 'Quiet roads and mountain views.',
+        title: 'Local help',
+        description: 'Food, temples, views, and timing.',
         icon: Trees
     }
 ];
@@ -923,6 +923,64 @@ const HomePage = () => {
                 </div>
             </section>
 
+            <section className='relative py-14' style={howItWorksSection}>
+                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
+                    <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-8'>
+                        <div className='max-w-xl'>
+                            <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>How It Works</p>
+                            <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
+                                A very easy way to arrange your day
+                            </h2>
+                            <p className='mt-4 text-base leading-8 text-slate-700'>
+                                Send me your idea, I help shape the route, and we keep the day comfortable from pickup to drop-off.
+                            </p>
+
+                            <Button
+                                asChild
+                                size='lg'
+                                className='mt-6 hidden rounded-md border border-[#d9b27a] bg-[#173247] px-6 text-white hover:bg-[#102434] sm:w-auto lg:inline-flex'>
+                                <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                                    Message May on WhatsApp
+                                    <ArrowRight className='size-4' />
+                                </Link>
+                            </Button>
+                        </div>
+
+                        <div className='relative pt-1 sm:pt-2'>
+                            <div className='absolute top-3 bottom-20 left-[1rem] w-px bg-[#d4bb95]/90 sm:bottom-3 sm:left-[1.15rem]' aria-hidden='true' />
+
+                            <div className='relative grid max-w-[34rem] gap-5'>
+                            {steps.map((step, index) => (
+                                <div
+                                    key={step.title}
+                                    className='grid grid-cols-[2rem_1fr] items-start gap-3 sm:grid-cols-[2.3rem_1fr] sm:gap-4'>
+                                    <div className='relative z-10 flex justify-center pt-0.5'>
+                                        <div className='flex size-8 items-center justify-center rounded-full border border-[#d7bb93] bg-[#fbf6ee] text-[0.64rem] font-semibold tracking-[0.18em] text-[#173247] shadow-[0_3px_10px_rgba(23,50,71,0.06)] sm:size-9'>
+                                            0{index + 1}
+                                        </div>
+                                    </div>
+                                    <div className='rounded-2xl border border-white/35 bg-[rgba(255,251,245,0.44)] px-4 py-3 shadow-[0_6px_18px_rgba(23,50,71,0.04)] backdrop-blur-[1px]'>
+                                        <h3 className='text-[1.05rem] font-semibold text-[#173247] sm:text-[1.12rem]'>{step.title}</h3>
+                                        <p className='mt-1.5 text-sm leading-7 text-slate-600'>{step.text}</p>
+                                    </div>
+                                </div>
+                            ))}
+                            </div>
+
+                            <Button
+                                asChild
+                                size='lg'
+                                className='mt-6 w-full rounded-md border border-[#d9b27a] bg-[#173247] px-6 text-white hover:bg-[#102434] sm:w-auto lg:hidden'>
+                                <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
+                                    Message May on WhatsApp
+                                    <ArrowRight className='size-4' />
+                                </Link>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id='about' className='relative overflow-hidden bg-[#f1e5d2] py-14 sm:py-16'>
                 <div aria-hidden='true' className='absolute inset-0 scale-x-[-1]' style={beigeBackgroundLayer} />
                 <div className='relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
@@ -1027,54 +1085,18 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className='relative py-14' style={howItWorksSection}>
-                <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-                    <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-8'>
-                        <div className='max-w-xl'>
-                            <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>How It Works</p>
-                            <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
-                                A very easy way to arrange your day
-                            </h2>
-                            <p className='mt-4 text-base leading-8 text-slate-700'>
-                                Send me your idea, I help shape the route, and we keep the day comfortable from pickup to drop-off.
-                            </p>
-
+            <section className='relative py-10 sm:py-12' style={beigeSection}>
+                <div className='mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
+                    <div className='rounded-lg border border-[#dcc6a5] bg-white/72 px-6 py-8 text-center shadow-sm backdrop-blur-sm sm:px-8'>
+                        <p className='text-sm font-semibold tracking-[0.22em] text-[#a1612a] uppercase'>Plan Your Day</p>
+                        <h2 className='travel-display mt-3 text-3xl text-[#173247] sm:text-4xl'>
+                            Tell May what kind of day you want, and she can help shape the route.
+                        </h2>
+                        <div className='mt-6 flex justify-center'>
                             <Button
                                 asChild
                                 size='lg'
-                                className='mt-6 hidden rounded-md border border-[#d9b27a] bg-[#173247] px-6 text-white hover:bg-[#102434] sm:w-auto lg:inline-flex'>
-                                <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
-                                    Message May on WhatsApp
-                                    <ArrowRight className='size-4' />
-                                </Link>
-                            </Button>
-                        </div>
-
-                        <div className='relative pt-1 sm:pt-2'>
-                            <div className='absolute top-3 bottom-20 left-[1rem] w-px bg-[#d4bb95]/90 sm:bottom-3 sm:left-[1.15rem]' aria-hidden='true' />
-
-                            <div className='relative grid max-w-[34rem] gap-5'>
-                            {steps.map((step, index) => (
-                                <div
-                                    key={step.title}
-                                    className='grid grid-cols-[2rem_1fr] items-start gap-3 sm:grid-cols-[2.3rem_1fr] sm:gap-4'>
-                                    <div className='relative z-10 flex justify-center pt-0.5'>
-                                        <div className='flex size-8 items-center justify-center rounded-full border border-[#d7bb93] bg-[#fbf6ee] text-[0.64rem] font-semibold tracking-[0.18em] text-[#173247] shadow-[0_3px_10px_rgba(23,50,71,0.06)] sm:size-9'>
-                                            0{index + 1}
-                                        </div>
-                                    </div>
-                                    <div className='rounded-2xl border border-white/35 bg-[rgba(255,251,245,0.44)] px-4 py-3 shadow-[0_6px_18px_rgba(23,50,71,0.04)] backdrop-blur-[1px]'>
-                                        <h3 className='text-[1.05rem] font-semibold text-[#173247] sm:text-[1.12rem]'>{step.title}</h3>
-                                        <p className='mt-1.5 text-sm leading-7 text-slate-600'>{step.text}</p>
-                                    </div>
-                                </div>
-                            ))}
-                            </div>
-
-                            <Button
-                                asChild
-                                size='lg'
-                                className='mt-6 w-full rounded-md border border-[#d9b27a] bg-[#173247] px-6 text-white hover:bg-[#102434] sm:w-auto lg:hidden'>
+                                className='rounded-full bg-[#d88a32] px-6 text-white hover:bg-[#c97822]'>
                                 <Link href={whatsappLink} target='_blank' rel='noopener noreferrer'>
                                     Message May on WhatsApp
                                     <ArrowRight className='size-4' />
