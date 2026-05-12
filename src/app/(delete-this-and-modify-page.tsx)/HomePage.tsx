@@ -91,7 +91,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'Temple views, hidden stops, and one of Chiang Mai’s most playful waterfalls.',
                 meta: 'Chiang Mai day trip',
                 accent: 'from-[#1b4864]/50 via-[#3f7a7c]/40 to-[#d89f57]/50',
-                image: '/images/Tours/Full Day Doi Suthep.jpg',
+                image: '/images/Tours/Full Day Doi Suthep.webp',
                 itinerary: [
                     { time: '08:30 - 09:00', title: 'Hotel pickup', text: 'I pick you up from your hotel at the time we agree in advance.' },
                     { title: 'Secret temple by the waterfall', text: 'Explore a quieter hidden temple in a beautiful natural setting.' },
@@ -129,7 +129,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'City temples, local flavors, and a calm river moment in one varied day.',
                 meta: 'Chiang Mai highlights',
                 accent: 'from-[#2e6171]/45 via-[#7aa1a2]/28 to-[#d3a25d]/50',
-                image: '/images/Tours/Full Day Chiang Mai Sky, Water & Land.jpg',
+                image: '/images/Tours/Full Day Chiang Mai Sky, Water & Land.webp',
                 itinerary: [
                     { time: '08:30 - 09:00', title: 'Hotel pickup', text: 'I pick you up from your hotel and we start the day in comfort.' },
                     { title: 'Doi Suthep Temple', text: 'Enjoy the spiritual atmosphere and panoramic views from Chiang Mai’s best-known temple.' },
@@ -148,7 +148,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'Trekking, lake views, waterfall time, and an easy nature-filled escape.',
                 meta: 'Nature route',
                 accent: 'from-[#334b4c]/50 via-[#6d8d63]/30 to-[#c78b48]/45',
-                image: '/images/Tours/Half or Full Day Trekking and Lunch.avif',
+                image: '/images/Tours/Half or Full Day Trekking and Lunch.webp',
                 itinerary: [
                     { title: 'Option 1: Full day', text: 'A slower nature day with temple, lake, lunch, and trekking.' },
                     { time: '08:30 - 09:30', title: 'Hotel pickup', text: 'I pick you up from your hotel and we head toward the countryside.' },
@@ -179,7 +179,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'High mountain views, waterfalls, pagodas, and scenic trails all in one day.',
                 meta: 'Doi Inthanon active day',
                 accent: 'from-[#36544a]/55 via-[#628d73]/32 to-[#c48a4b]/45',
-                image: '/images/Tours/Full Day Doi Inthanon Active Trekking.jpg',
+                image: '/images/Tours/Full Day Doi Inthanon Active Trekking.webp',
                 itinerary: [
                     { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with pickup from your hotel at the agreed time.' },
                     { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive to Thailand’s highest mountain and one of the country’s most beautiful national parks.' },
@@ -200,7 +200,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'A gentler mountain day with cool air, pagodas, and beautiful waterfalls.',
                 meta: 'Doi Inthanon relaxed day',
                 accent: 'from-[#34535f]/52 via-[#7397a0]/28 to-[#d1a56a]/48',
-                image: '/images/Tours/Full Day Doi Inthanon Relax.jpg',
+                image: '/images/Tours/Full Day Doi Inthanon Relax.webp',
                 itinerary: [
                     { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with a prompt pickup from your hotel.' },
                     { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive to Thailand’s highest mountain.' },
@@ -220,7 +220,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'Mountain scenery, local culture, and a hill tribe village in one route.',
                 meta: 'Doi Inthanon cultural day',
                 accent: 'from-[#43594b]/55 via-[#7c8f63]/28 to-[#b78354]/48',
-                image: '/images/Tours/Full Day Doi Inthanon Hilltribe.jpg',
+                image: '/images/Tours/Full Day Doi Inthanon Hilltribe.webp',
                 itinerary: [
                     { time: '07:30 - 08:00', title: 'Pick up from hotel', text: 'Begin the day with pickup from your hotel.' },
                     { title: 'Journey to Doi Inthanon National Park', text: 'Enjoy the scenic drive toward Thailand’s highest mountain.' },
@@ -246,7 +246,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'Chiang Rai’s best-known landmarks with an easy scenic route from Chiang Mai.',
                 meta: 'Chiang Rai full day',
                 accent: 'from-[#314f69]/52 via-[#6e93ad]/28 to-[#d3ae79]/45',
-                image: '/images/Tours/Chiang Rai White Temple and Big Buddha.jpg',
+                image: '/images/Tours/Chiang Rai White Temple and Big Buddha.webp',
                 itinerary: [
                     { time: '07:30 - 08:00', title: 'Departure from hotel', text: 'Leave Chiang Mai in the morning for the drive to Chiang Rai Province.' },
                     { title: 'Mae Khachan Hot Spring', text: 'Enjoy a short stop and stretch in the peaceful surroundings.' },
@@ -265,7 +265,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'A bold art-and-temple day across Chiang Rai’s most distinctive sites.',
                 meta: 'Chiang Rai highlights',
                 accent: 'from-[#224e67]/55 via-[#4d85aa]/28 to-[#d1a16a]/48',
-                image: '/images/Tours/Chiang Rai White & Blue Temple & Black House.jpg',
+                image: '/images/Tours/Chiang Rai White & Blue Temple & Black House.webp',
                 itinerary: [
                     { time: '07:30', title: 'Departure from hotel', text: 'Leave Chiang Mai in the morning for the approximately 3-hour drive to Chiang Rai.' },
                     { title: 'Mae Khachan Hot Spring', text: 'Enjoy a short break before continuing north.' },
@@ -310,7 +310,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'Temples, local culture, scenic views, and a full-day guided experience.',
                 meta: 'Full day Lampang',
                 accent: 'from-[#4f5b46]/52 via-[#83946f]/28 to-[#cb9357]/45',
-                image: '/images/Tours/Full Day Explore Amazing Lampang .jpg',
+                image: '/images/Tours/Full Day Explore Amazing Lampang .webp',
                 itinerary: [
                     { time: '08:00', title: 'Pick up from your hotel', text: 'Pickup from your hotel at the agreed time.' },
                     { title: 'Wat Chalermprakiat Phrachomklao Rachanuson', text: 'After around 2.5 hours of driving, visit the temple and take in its striking mountain setting.' },
@@ -345,7 +345,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'A fun active day with water, adventure, and easy group-friendly energy.',
                 meta: 'Waterpark day',
                 accent: 'from-[#245b72]/52 via-[#4fa2bc]/26 to-[#d1a66e]/42',
-                image: '/images/Tours/Chiang Mai Grand Canyon.jpg',
+                image: '/images/Tours/Chiang Mai Grand Canyon.webp',
                 itinerary: [
                     { title: 'Pick up from your hotel in Chiang Mai', text: 'I can arrange pickup at a time that works best for you.' },
                     { title: 'Arrival at Grand Canyon Waterpark', text: 'Arrive and get ready for a fun day of activities.' },
@@ -362,7 +362,7 @@ const tripGroups: TripGroup[] = [
                 subtitle: 'A relaxed family outing with animals, shows, and a memorable evening feel.',
                 meta: 'Family destination',
                 accent: 'from-[#314146]/56 via-[#6c7c65]/24 to-[#bd8a55]/44',
-                image: '/images/Tours/Chiang Mai Night Safari.jpg',
+                image: '/images/Tours/Chiang Mai Night Safari.webp',
                 itinerary: [
                     { title: 'Morning or evening schedule', text: 'Pick up from your hotel at your preferred time for a noon or evening visit.' },
                     { title: 'Arrival at Chiang Mai Night Safari', text: 'Choose the timing that best suits your day.' },
@@ -392,19 +392,19 @@ const reviews = [
 ];
 
 const tourMarqueeImages = [
-    '/images/marquee/pexels-daciana-cristina-visan-2149801141-32514143.jpg',
-    '/images/marquee/pexels-sandro-sandrone-lazzarini-15116771-6333432.jpg',
-    '/images/marquee/pexels-jean-papillon-28600264.jpg',
-    '/images/marquee/pexels-kirandeepsingh-17371721.jpg',
-    '/images/marquee/pexels-ton-sanitprem-3503969-5233858.jpg'
+    '/images/marquee/pexels-daciana-cristina-visan-2149801141-32514143.webp',
+    '/images/marquee/pexels-sandro-sandrone-lazzarini-15116771-6333432.webp',
+    '/images/marquee/pexels-jean-papillon-28600264.webp',
+    '/images/marquee/pexels-kirandeepsingh-17371721.webp',
+    '/images/marquee/pexels-ton-sanitprem-3503969-5233858.webp'
 ];
 
 const reviewMarqueeImages = [
-    '/images/Tours/Full Day Doi Suthep.jpg',
+    '/images/Tours/Full Day Doi Suthep.webp',
     '/images/Tours/Half Day Mountain Temple Tour.webp',
-    '/images/Tours/Full Day Chiang Mai Sky, Water & Land.jpg',
+    '/images/Tours/Full Day Chiang Mai Sky, Water & Land.webp',
     '/images/Tours/Elephant and Waterfall Experience .webp',
-    '/images/Tours/Half or Full Day Trekking and Lunch.avif'
+    '/images/Tours/Half or Full Day Trekking and Lunch.webp'
 ];
 
 const steps = [
@@ -424,20 +424,20 @@ const steps = [
 
 const patternedLight = {
     backgroundImage:
-        "linear-gradient(180deg, rgba(248,246,239,0.9) 0%, rgba(255,252,247,0.93) 100%), url('/images/cxbackground.png')",
+        "linear-gradient(180deg, rgba(248,246,239,0.9) 0%, rgba(255,252,247,0.93) 100%), url('/images/cxbackground.webp')",
     backgroundSize: 'cover',
     backgroundPosition: 'center'
 } as const;
 
 const beigeSection = {
     backgroundColor: '#f1e5d2',
-    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.png')",
+    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.webp')",
     backgroundSize: 'cover',
     backgroundPosition: 'center'
 } as const;
 
 const beigeBackgroundLayer = {
-    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.png')",
+    backgroundImage: "linear-gradient(180deg, rgba(241,229,210,0.9), rgba(241,229,210,0.94)), url('/images/beigebg.webp')",
     backgroundSize: 'cover',
     backgroundPosition: 'center'
 } as const;
@@ -508,6 +508,39 @@ const HomePage = () => {
         return () => window.clearInterval(intervalId);
     }, []);
 
+    useEffect(() => {
+        document.documentElement.classList.add('reveal-ready');
+
+        const revealElements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+
+        if (!('IntersectionObserver' in window)) {
+            revealElements.forEach((element) => element.classList.add('is-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                rootMargin: '0px 0px -12% 0px',
+                threshold: 0.15
+            }
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+
+        return () => {
+            observer.disconnect();
+            document.documentElement.classList.remove('reveal-ready');
+        };
+    }, []);
+
     const moveTrip = (direction: 'previous' | 'next') => {
         setOpenTrip(null);
         setMobileTripMenuOpen(false);
@@ -525,13 +558,13 @@ const HomePage = () => {
         <main
             id='top'
             className='bg-[#f8f3ea] text-slate-900'>
-            <header className='sticky top-0 z-20 border-b border-[#e8dcc8]/80 bg-[rgba(250,246,239,0.86)] backdrop-blur-xl'>
+            <header className='sticky top-0 z-50 border-b border-[#e8dcc8]/80 bg-[rgba(250,246,239,0.86)] backdrop-blur-xl'>
                 <div className='mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8'>
                     <Link href='#top' className='flex items-center'>
                         <img
                             alt='Chiang Mai Driver logo'
                             className='h-11 w-auto sm:h-12'
-                            src='/images/cxlogo topnav.png'
+                            src='/images/cxlogo topnav.webp'
                         />
                     </Link>
                     <nav className='hidden items-center gap-6 text-sm text-slate-600 md:flex'>
@@ -561,7 +594,7 @@ const HomePage = () => {
             <section className='relative isolate min-h-[92svh] overflow-hidden'>
                 <video
                     className='absolute inset-0 h-full w-full object-cover'
-                    src='/images/Cx Hero.mp4'
+                    src='/images/Cx Hero.webm'
                     autoPlay
                     muted
                     loop
@@ -576,16 +609,25 @@ const HomePage = () => {
                         <img
                             alt='Chiang Mai Driver hero logo'
                             className='mb-8 h-48 w-auto scale-150 sm:h-52 lg:h-72'
-                            src='/images/cxlogo.png'
+                            src='/images/cxlogo.webp'
                         />
-                        <h1 className='travel-display mt-6 text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl'>
+                        <h1
+                            data-reveal='hero-title'
+                            style={{ transitionDelay: '110ms' }}
+                            className='travel-display mt-6 text-5xl leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl'>
                             Explore Chiang Mai with May.
                         </h1>
-                        <p className='mt-5 max-w-2xl text-lg leading-8 text-white/82'>
+                        <p
+                            data-reveal='fade-up'
+                            style={{ transitionDelay: '210ms' }}
+                            className='mt-5 max-w-2xl text-lg leading-8 text-white/82'>
                             Private day trips and driver service for a warm, easy, and personal experience in northern Thailand.
                         </p>
 
-                        <div className='mt-8 flex flex-row items-center justify-center gap-3'>
+                        <div
+                            data-reveal='fade-up'
+                            style={{ transitionDelay: '310ms' }}
+                            className='mt-8 flex flex-row items-center justify-center gap-3'>
                             <Button
                                 asChild
                                 size='lg'
@@ -612,15 +654,17 @@ const HomePage = () => {
             <section className='relative py-9 sm:py-10' style={patternedLight}>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center'>
-                        <div className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm'>
+                        <div
+                            data-reveal='image-left'
+                            className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm'>
                             <img
                                 alt='Welcome to Chiang Mai'
                                 className='h-auto w-full'
-                                src='/images/welcometocx.jpg'
+                                src='/images/welcometocx.webp'
                             />
                         </div>
 
-                        <div className='max-w-2xl'>
+                        <div data-reveal='text-right' className='max-w-2xl'>
                             <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>
                                 Welcome to Chiang Mai
                             </p>
@@ -640,8 +684,10 @@ const HomePage = () => {
             <section className='relative border-y border-[#e5d6c0] py-8' style={beigeSection}>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='grid grid-cols-2 gap-4 lg:grid-cols-4'>
-                        {highlights.map(({ title, description, icon: Icon }) => (
+                        {highlights.map(({ title, description, icon: Icon }, index) => (
                             <div
+                                data-reveal='card'
+                                style={{ transitionDelay: `${index * 80}ms` }}
                                 key={title}
                                 className='flex min-h-36 flex-col items-center justify-center rounded-lg border border-[#dfcfb4] bg-[#fffaf2]/82 px-4 py-5 text-center shadow-sm backdrop-blur-sm sm:min-h-32 sm:px-5'>
                                 <span className='flex size-12 items-center justify-center rounded-md bg-[#f2dfc4] text-[#b56f2d] shadow-[inset_0_0_0_1px_rgba(181,111,45,0.14)]'>
@@ -671,15 +717,18 @@ const HomePage = () => {
 
             <section id='trips' className='relative py-16' style={patternedLight}>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-                    <div className='max-w-3xl'>
+                    <div data-reveal='fade-up' className='max-w-3xl'>
                         <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>Popular Tours</p>
                         <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
                             A better way to choose a day trip
                         </h2>
                     </div>
 
-                    <div className='relative z-30 mt-6'>
-                        <div className='relative z-30 rounded-lg border border-[#dcc6a5] bg-white/70 p-2 shadow-sm backdrop-blur-sm'>
+                    <div
+                        data-reveal='fade-up'
+                        style={{ transitionDelay: '110ms' }}
+                        className='relative z-20 mt-6'>
+                        <div className='relative z-20 rounded-lg border border-[#dcc6a5] bg-white/70 p-2 shadow-sm backdrop-blur-sm'>
                             <div className='relative z-20 md:hidden'>
                                 <button
                                     type='button'
@@ -751,13 +800,16 @@ const HomePage = () => {
                             </div>
                         </div>
 
-                        <div className='relative z-0 mt-5'>
+                        <div
+                            data-reveal='tour-card'
+                            style={{ transitionDelay: '210ms' }}
+                            className='relative z-0 mt-5'>
                             <article className='relative z-0 overflow-hidden rounded-lg border border-[#dfcfb4] bg-white shadow-sm'>
                                 <div className='relative min-h-[74svh] overflow-hidden sm:min-h-[520px]'>
                                     <img
                                         alt={selectedTrip.title}
                                         className='absolute inset-0 h-full w-full object-cover object-center'
-                                        src={selectedTrip.image ?? '/images/cxbackground.png'}
+                                        src={selectedTrip.image ?? '/images/cxbackground.webp'}
                                     />
                                     <div className='absolute inset-0 bg-[linear-gradient(90deg,rgba(10,25,35,0.8)_0%,rgba(10,25,35,0.64)_24%,rgba(10,25,35,0.28)_48%,rgba(10,25,35,0.08)_70%,rgba(10,25,35,0.02)_100%)]' />
                                     <div className='absolute inset-0 bg-[linear-gradient(180deg,rgba(10,25,35,0.04)_0%,rgba(10,25,35,0.08)_42%,rgba(10,25,35,0.42)_100%)]' />
@@ -926,7 +978,7 @@ const HomePage = () => {
             <section className='relative py-14' style={howItWorksSection}>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-8'>
-                        <div className='max-w-xl'>
+                        <div data-reveal='text-left' className='max-w-xl'>
                             <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>How It Works</p>
                             <h2 className='travel-display mt-3 text-4xl text-[#173247] sm:text-5xl'>
                                 A very easy way to arrange your day
@@ -946,12 +998,14 @@ const HomePage = () => {
                             </Button>
                         </div>
 
-                        <div className='relative pt-1 sm:pt-2'>
+                        <div data-reveal='timeline' className='relative pt-1 sm:pt-2'>
                             <div className='absolute top-3 bottom-20 left-[1rem] w-px bg-[#d4bb95]/90 sm:bottom-3 sm:left-[1.15rem]' aria-hidden='true' />
 
                             <div className='relative grid max-w-[34rem] gap-5'>
                             {steps.map((step, index) => (
                                 <div
+                                    data-reveal='step'
+                                    style={{ transitionDelay: `${index * 120}ms` }}
                                     key={step.title}
                                     className='grid grid-cols-[2rem_1fr] items-start gap-3 sm:grid-cols-[2.3rem_1fr] sm:gap-4'>
                                     <div className='relative z-10 flex justify-center pt-0.5'>
@@ -984,17 +1038,19 @@ const HomePage = () => {
             <section id='about' className='relative overflow-hidden bg-[#f1e5d2] py-14 sm:py-16'>
                 <div aria-hidden='true' className='absolute inset-0 scale-x-[-1]' style={beigeBackgroundLayer} />
                 <div className='relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-                    <div className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm backdrop-blur-sm'>
+                    <div
+                        data-reveal='soft-scale'
+                        className='overflow-hidden rounded-lg border border-[#d8c3a3] bg-white/70 shadow-sm backdrop-blur-sm'>
                         <div className='grid lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch'>
-                            <div className='relative min-h-[300px] lg:min-h-[390px]'>
+                            <div data-reveal='image-left' className='relative min-h-[300px] lg:min-h-[390px]'>
                                 <img
                                     alt='May in Chiang Mai'
                                     className='absolute inset-0 h-full w-full object-cover'
-                                    src='/images/nattayamay 1.png'
+                                    src='/images/nattayamay 1.webp'
                                 />
                             </div>
 
-                            <div className='px-6 py-8 sm:px-8 sm:py-10'>
+                            <div data-reveal='text-right' className='px-6 py-8 sm:px-8 sm:py-10'>
                                 <p className='text-sm font-semibold tracking-[0.24em] text-[#a1612a] uppercase'>About May</p>
                                 <h2 className='travel-display mt-3 max-w-2xl text-3xl text-[#173247] sm:text-4xl'>
                                     I want your trip to feel welcoming, smooth, and full of good memories.
@@ -1028,8 +1084,10 @@ const HomePage = () => {
             <section id='reviews' className='relative py-12' style={patternedLight}>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='hidden gap-5 lg:grid lg:grid-cols-3'>
-                        {reviews.map((review) => (
+                        {reviews.map((review, index) => (
                             <div
+                                data-reveal='card'
+                                style={{ transitionDelay: `${index * 100}ms` }}
                                 key={review.author}
                                 className='rounded-lg border border-[#dfcfb4] bg-white px-6 py-6 shadow-sm'>
                                 <div className='flex gap-1 text-[#d89541]'>
@@ -1046,7 +1104,7 @@ const HomePage = () => {
                         ))}
                     </div>
 
-                    <div className='mx-auto max-w-3xl overflow-hidden lg:hidden'>
+                    <div data-reveal='card' className='mx-auto max-w-3xl overflow-hidden lg:hidden'>
                         <div
                             className='flex transition-transform duration-700 ease-out'
                             style={{ transform: `translateX(-${activeReviewIndex * 100}%)` }}>
@@ -1087,7 +1145,9 @@ const HomePage = () => {
 
             <section className='relative py-10 sm:py-12' style={beigeSection}>
                 <div className='mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
-                    <div className='rounded-lg border border-[#dcc6a5] bg-white/72 px-6 py-8 text-center shadow-sm backdrop-blur-sm sm:px-8'>
+                    <div
+                        data-reveal='soft-scale'
+                        className='rounded-lg border border-[#dcc6a5] bg-white/72 px-6 py-8 text-center shadow-sm backdrop-blur-sm sm:px-8'>
                         <p className='text-sm font-semibold tracking-[0.22em] text-[#a1612a] uppercase'>Plan Your Day</p>
                         <h2 className='travel-display mt-3 text-3xl text-[#173247] sm:text-4xl'>
                             Tell May what kind of day you want, and she can help shape the route.
@@ -1110,18 +1170,18 @@ const HomePage = () => {
             <footer className='relative bg-[#102f43] py-8 text-white sm:py-9'>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='grid gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:items-start'>
-                        <div>
+                        <div data-reveal='text-left'>
                             <img
                                 alt='Chiang Mai Driver logo'
                                 className='h-12 w-auto'
-                                src='/images/cxlogo footer.png'
+                                src='/images/cxlogo footer.webp'
                             />
                             <h2 className='travel-display mt-3 max-w-sm text-lg leading-snug text-white sm:text-xl'>
                                 Travel days should feel easy, personal, and full of lovely memories.
                             </h2>
                         </div>
 
-                        <div className='grid gap-5 sm:grid-cols-[1fr_auto]'>
+                        <div data-reveal='text-right' className='grid gap-5 sm:grid-cols-[1fr_auto]'>
                             <div>
                                 <p className='text-sm font-semibold tracking-[0.18em] text-[#e4be88] uppercase'>Contact</p>
                                 <div className='mt-3 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/78'>
