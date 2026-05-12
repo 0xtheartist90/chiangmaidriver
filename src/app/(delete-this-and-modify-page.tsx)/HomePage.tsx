@@ -1170,7 +1170,7 @@ const HomePage = () => {
             <footer className='relative bg-[#102f43] py-8 text-white sm:py-9'>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
                     <div className='grid gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:items-start'>
-                        <div data-reveal='text-left'>
+                        <div>
                             <img
                                 alt='Chiang Mai Driver logo'
                                 className='h-12 w-auto'
@@ -1181,7 +1181,7 @@ const HomePage = () => {
                             </h2>
                         </div>
 
-                        <div data-reveal='text-right' className='grid gap-5 sm:grid-cols-[1fr_auto]'>
+                        <div className='grid gap-5 sm:grid-cols-[1fr_auto]'>
                             <div>
                                 <p className='text-sm font-semibold tracking-[0.18em] text-[#e4be88] uppercase'>Contact</p>
                                 <div className='mt-3 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/78'>
