@@ -22,7 +22,15 @@ const geistMono = localFont({
 export const metadata: Metadata = {
     title: 'Chiang Mai Driver | Private Tours with May',
     description:
-        'Private Chiang Mai tours with May, a friendly local guide offering custom day trips, private driver service, and comfortable local travel.'
+        'Private Chiang Mai tours with May, a friendly local guide offering custom day trips, private driver service, and comfortable local travel.',
+    icons: {
+        icon: [
+            { url: '/favicon.ico?v=3', sizes: 'any' },
+            { url: '/icon.png?v=3', type: 'image/png', sizes: '300x300' },
+            { url: '/images/cxfavicon.png?v=3', type: 'image/png', sizes: '300x300' }
+        ],
+        apple: [{ url: '/apple-icon.png?v=3', sizes: '300x300', type: 'image/png' }]
+    }
 };
 
 const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {

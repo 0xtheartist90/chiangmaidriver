@@ -594,13 +594,14 @@ const HomePage = () => {
             <section className='relative isolate min-h-[92svh] overflow-hidden'>
                 <video
                     className='absolute inset-0 h-full w-full object-cover'
-                    src='/images/Cx Hero.webm'
                     autoPlay
                     muted
                     loop
                     playsInline
-                    preload='auto'
-                />
+                    preload='auto'>
+                    <source src='/images/Cx Hero.mp4' type='video/mp4' />
+                    <source src='/images/Cx Hero.webm' type='video/webm' />
+                </video>
                 <div className='absolute inset-0 bg-[linear-gradient(180deg,rgba(8,22,32,0.22)_0%,rgba(8,22,32,0.48)_45%,rgba(8,22,32,0.72)_100%)]' />
                 <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(240,196,125,0.24),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(83,150,176,0.18),transparent_26%)]' />
 
